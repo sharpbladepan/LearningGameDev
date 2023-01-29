@@ -123,11 +123,7 @@ void updateGame(){
     // p' '
     // P' '
     if(map[next_posx][next_posy] == OBJ_EMPTY) {            // can move one step to next_pos, no effect for nnext_pos
-        if(map[curr_posx][curr_posy] == OBJ_PLAYER){
-            map[curr_posx][curr_posy] = OBJ_EMPTY;
-        }else if(map[curr_posx][curr_posy] == OBJ_PLAYER_ON_DEST) {     // curr_pos is the destination of box
-            map[curr_posx][curr_posy] = OBJ_DEST_OF_BOX;
-        }
+        map[curr_posx][curr_posy] = (map[curr_posx][curr_posy] == OBJ_PLAYER) ?  OBJ_EMPTY : OBJ_DEST_OF_BOX;
         map[next_posx][next_posy] = OBJ_PLAYER;
         curr_posx = next_posx;
         curr_posy = next_posy;
@@ -136,11 +132,7 @@ void updateGame(){
     // p.
     // P.
     if(map[next_posx][next_posy] == OBJ_DEST_OF_BOX) {      // can move one step to next_pos, no effect for nnext_pos
-        if(map[curr_posx][curr_posy] == OBJ_PLAYER){
-            map[curr_posx][curr_posy] = OBJ_EMPTY;
-        }else if(map[curr_posx][curr_posy] == OBJ_PLAYER_ON_DEST) {     // curr_pos is the destination of box
-            map[curr_posx][curr_posy] = OBJ_DEST_OF_BOX;
-        }
+        map[curr_posx][curr_posy] = (map[curr_posx][curr_posy] == OBJ_PLAYER) ?  OBJ_EMPTY : OBJ_DEST_OF_BOX;
         map[next_posx][next_posy] = OBJ_PLAYER_ON_DEST;
         curr_posx = next_posx;
         curr_posy = next_posy;
@@ -151,11 +143,7 @@ void updateGame(){
     if(map[next_posx][next_posy] == OBJ_BOX_NOT_ON_DEST && map[nnext_posx][nnext_posy] == OBJ_EMPTY) {
         map[nnext_posx][nnext_posy] = OBJ_BOX_NOT_ON_DEST;
         map[next_posx][next_posy] = OBJ_PLAYER;
-        if(map[curr_posx][curr_posy] == OBJ_PLAYER) {
-            map[curr_posx][curr_posy] = OBJ_EMPTY;
-        } else {
-            map[curr_posx][curr_posy] = OBJ_DEST_OF_BOX;
-        }
+        map[curr_posx][curr_posy] = (map[curr_posx][curr_posy] == OBJ_PLAYER) ?  OBJ_EMPTY : OBJ_DEST_OF_BOX;
         curr_posx = next_posx;
         curr_posy = next_posy;
         return;
@@ -165,11 +153,7 @@ void updateGame(){
     if(map[next_posx][next_posy] == OBJ_BOX_NOT_ON_DEST && map[nnext_posx][nnext_posy] == OBJ_DEST_OF_BOX) {
         map[nnext_posx][nnext_posy] = OBJ_BOX_ON_DEST;
         map[next_posx][next_posy] = OBJ_PLAYER;
-        if(map[curr_posx][curr_posy] == OBJ_PLAYER) {
-            map[curr_posx][curr_posy] = OBJ_EMPTY;
-        } else {
-            map[curr_posx][curr_posy] = OBJ_DEST_OF_BOX;
-        }
+        map[curr_posx][curr_posy] = (map[curr_posx][curr_posy] == OBJ_PLAYER) ?  OBJ_EMPTY : OBJ_DEST_OF_BOX;
         curr_posx = next_posx;
         curr_posy = next_posy;
         return;
@@ -179,11 +163,8 @@ void updateGame(){
     if(map[next_posx][next_posy] == OBJ_BOX_ON_DEST && map[nnext_posx][nnext_posy] == OBJ_EMPTY) {
         map[nnext_posx][nnext_posy] = OBJ_BOX_NOT_ON_DEST;
         map[next_posx][next_posy] = OBJ_PLAYER_ON_DEST;
-        if(map[curr_posx][curr_posy] == OBJ_PLAYER) {
-            map[curr_posx][curr_posy] = OBJ_EMPTY;
-        } else {
-            map[curr_posx][curr_posy] = OBJ_DEST_OF_BOX;
-        }
+
+        map[curr_posx][curr_posy] = (map[curr_posx][curr_posy] == OBJ_PLAYER) ?  OBJ_EMPTY : OBJ_DEST_OF_BOX;
         curr_posx = next_posx;
         curr_posy = next_posy;
         return;
@@ -193,11 +174,8 @@ void updateGame(){
     if(map[next_posx][next_posy] == OBJ_BOX_ON_DEST && map[nnext_posx][nnext_posy] == OBJ_DEST_OF_BOX) {
         map[nnext_posx][nnext_posy] = OBJ_BOX_ON_DEST;
         map[next_posx][next_posy] = OBJ_PLAYER_ON_DEST;
-        if(map[curr_posx][curr_posy] == OBJ_PLAYER) {
-            map[curr_posx][curr_posy] = OBJ_EMPTY;
-        } else {
-            map[curr_posx][curr_posy] = OBJ_DEST_OF_BOX;
-        }
+
+        map[curr_posx][curr_posy] = (map[curr_posx][curr_posy] == OBJ_PLAYER) ?  OBJ_EMPTY : OBJ_DEST_OF_BOX;
         curr_posx = next_posx;
         curr_posy = next_posy;
         return;
